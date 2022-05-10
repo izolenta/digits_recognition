@@ -1,0 +1,15 @@
+.cell {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    margin-left: 1px;
+    background: white;
+}
+
+.cell.selected {
+    background: black;
+}
+
+.cell.grayed {
+    background: #777;
+}

@@ -1,5 +1,5 @@
 import {NeuralNetwork} from 'brain.js';
-import {trainedData} from "./trainedData";
+import {brainjsTrainedData} from "./brainjsTrainedData";
 
 const config = {
   hiddenLayers: [30],
@@ -7,7 +7,7 @@ const config = {
 };
 
 const net = new NeuralNetwork(config)
-net.fromJSON(JSON.parse(trainedData));
+net.fromJSON(JSON.parse(brainjsTrainedData));
 
 export function processData(digitData: number[]): number[] {
   return net.run(digitData) as number[];

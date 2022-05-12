@@ -1,7 +1,7 @@
 import React, {ReactNode, useEffect, useState} from 'react';
 import './board.css';
 import Cell, {CellState} from "./cell/cell";
-import {processData} from "../service/digitDetectorService";
+import {processData} from "../service/brainjsService";
 
 const width = 28;
 const height = 28;

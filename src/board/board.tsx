@@ -16,6 +16,11 @@ const drawPattern = [
 
 let isInitialized = false;
 
+interface ProcessedResult {
+  type: number;
+  score: number;
+}
+
 function Board() {
 
   let cells = [];
@@ -37,13 +42,20 @@ function Board() {
       return;
     }
     setProcessedData(processDataTf(cellState));
+
     let b = [];
+    let lengths = new Array<ProcessedResult>();
+
     for (let i=0; i<10; i++) {
-      let barLength = 0;
-      barLength = processedData[i] * 600;
-      let barStyle = {width: barLength};
+      lengths.push({type: i, score: processedData[i] * 560});
+    }
+
+    lengths.sort((a, b) => Math.sign(b.score - a.score));
+
+    for (let i=0; i<5; i++) {
+      let barStyle = {width: lengths[i].score};
       const elem = <div className={'bar'} key={i}>
-        <div className={'bar-digit'}>{i}:</div>
+        <div className={'bar-digit'}>{lengths[i].type}:</div>
         <div className={'bar-graph'} style={barStyle}></div>
       </div>;
       b.push(elem);
@@ -89,6 +101,7 @@ function Board() {
   return (
     <div>
       <div className={"board"}
+           onContextMenu={(e) => e.preventDefault()}
            onPointerDown={() => setDrawing(true)}
            onPointerUp={() => setDrawing(false)}>
         { cells }

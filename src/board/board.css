@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: repeat(28, 21px);
     grid-template-rows: repeat(28, 21px);
+    touch-action: none;
 }
 
 .clearButton {

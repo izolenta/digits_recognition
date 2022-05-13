@@ -10,6 +10,11 @@
     background: black;
 }
 
-.cell.grayed {
-    background: #777;
+.cell.grayed33 {
+    background: #aaa;
 }
+
+.cell.grayed66 {
+    background: #555;
+}
+

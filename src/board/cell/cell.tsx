@@ -12,9 +12,9 @@ const Cell = ({ isFilled, onDraw }) => {
   return (
     <div
       className={cName}
-      onMouseDown={onDraw}
-      onMouseMove={onDraw}
-      onMouseEnter={onDraw}>
+      onPointerDown= {onDraw}
+      onPointerMove={onDraw}
+      onPointerEnter={onDraw}>
     </div>
   );
 }

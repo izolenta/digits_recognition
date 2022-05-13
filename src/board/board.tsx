@@ -89,8 +89,8 @@ function Board() {
   return (
     <div>
       <div className={"board"}
-           onMouseDown={() => setDrawing(true)}
-           onMouseUp={() => setDrawing(false)}>
+           onPointerDown={() => setDrawing(true)}
+           onPointerUp={() => setDrawing(false)}>
         { cells }
       </div>
       <button className={'clearButton'} onClick={() => setCellState(emptyCells)}>Clear</button>

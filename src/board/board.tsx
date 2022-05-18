@@ -21,7 +21,7 @@ interface ProcessedResult {
   score: number;
 }
 
-function Board() {
+const Board = () => {
 
   let cells = [];
 

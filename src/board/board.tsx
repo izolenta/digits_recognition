@@ -28,6 +28,7 @@ const Board = () => {
   const [isDrawing, setDrawing] = useState(false);
   const [cellState, setCellState] = useState(emptyCells);
   const [processedData, setProcessedData] = useState(new Array<number>(10).fill(0));
+  const [processedResult, setProcessedResult] = useState(-1);
 
   const [bars, setBars] = useState(new Array<ReactNode>());
 
@@ -98,18 +99,42 @@ const Board = () => {
       onDraw={() => drawCell(i)}
     />)
   }
+
+  let processed = <div></div>;
+
+  if (processedResult >= 0) {
+    processed = <div className={'processed'}>
+      { processedResult }
+    </div>
+  }
+
   return (
     <div>
       <div className={"board"}
            onContextMenu={(e) => e.preventDefault()}
            onPointerDown={() => setDrawing(true)}
-           onPointerUp={() => setDrawing(false)}>
+           onPointerUp={() => {
+             setDrawing(false);
+             let result = -1;
+             let maxValue = 0;
+             for (let i =0; i<10; i++) {
+               if (processedData[i] > maxValue) {
+                 maxValue = processedData[i];
+                 result = i;
+               }
+             }
+             setProcessedResult(result)
+           }}>
         { cells }
       </div>
-      <button className={'clearButton'} onClick={() => setCellState(emptyCells)}>Clear</button>
+      <button className={'clearButton'} onClick={() => {
+        setCellState(emptyCells);
+        setProcessedResult(-1);
+      }}>Clear</button>
       <div className={'bars'}>
         { bars }
       </div>
+      {processed}
     </div>
   );
 }
